@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends CrudRepository<ReservationModel, Integer> {
     //
-//    List<ReservationModel> findByName(String name);
+    List<ReservationModel> findByLastname(String lastname);
 //
 //    ReservationModel findByNameAndLastname(String name, String lastname);
 //
