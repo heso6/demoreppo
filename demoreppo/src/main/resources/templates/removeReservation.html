@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+<div style="width: 50%; height: 100%; background-color:lightgreen; border: 1px solid black; ">
+
+    <form th:action="@{/removeReservation}" th:object="${removeForm}" method="post">
+        <center><h1 style="background-color: lightblue; margin-top: 0;
+        margin-bottom: 0; border: 1px solid black;"><span th:text="${errorInfo}"></span></h1></center>
+        <br/>
+        <span>Wprowadź swój kod aby anulowac rezerwacje:</span>
+        <br/>
+        <!--<span th:if="${#fields.hasErrors('removeCode')}" th:errors="*{removeCode}" style="color: red"></span>-->
+        <input placeholder="kod" type="text">
+        <br/>
+        <p></p>
+        <input type="submit" value="send">
+        <center><h1><span th:text="${infoMessage}" th:style="'color: red'"></span></h1></center>
+    </form>
+    <p></p>
+
+    <table>
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Adres</th>
+            <th>Data</th>
+        </tr>
+
+        <th:block th:each="reservation : ${reservations}">
+            <tr>
+                <th th:text="${reservation.name}"></th>
+                <th th:text="${reservation.lastname}"></th>
+                <th th:text="${reservation.adres}"></th>
+                <th th:text="${reservation.date}"></th>
+            </tr>
+        </th:block>
+    </table>
+    <p></p>
+</div>
+</center>
+
+
+<center><h1><span th:text="${infoMessage}" th:style="'color: red'"></span></h1></center>
+</body>
+<style>
+    table, th, tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0px
+</style>
+</html>

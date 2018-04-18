@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!--<center><h1><span th:text="${errorInfo}" style="color: red"></span></h1></center>-->
+<!--<p></p>-->
+<center>
+
+    <div style="width: 50%; height: 100%; background-color:lightgreen; border: 1px solid black;
+     ">
+
+        <center>
+            <h1 style="background-color:lightblue;
+        margin-top: 0;
+        margin-bottom: 0; border: 1px solid black;"><span>Witamy w formularzu rezerwacji</span></h1></center>
+        <form th:action="@{/}" th:object="${reservationForm}" method="post">
+            <center><h1><span th:text="${errorInfo}" style="color: red"></span></h1></center>
+            <p></p>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></span>
+            <br/>
+            <input placeholder="Imie" type="text" th:field="*{name}">
+            <br/>
+            <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" style="color: red"></span>
+            <br/>
+            <input placeholder="Nazwisko" type="text" th:field="*{lastname}">
+            <p></p>
+            <span th:if="${#fields.hasErrors('adres')}" th:errors="*{adres}" style="color: red"></span>
+            <br/>
+            <input placeholder="Adres" type="text" th:field="*{adres}">
+            <p></p>
+            <p></p>
+            <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" style="color: red"></span>
+            <span th:text="${errorDate}" style="color: red"></span>
+            <p></p>
+            <input placeholder="Data: yyyy-mm-dd" type="text" th:field="*{date}">
+            <p></p>
+
+            <input type="submit" value="zarezerwuj">
+        </form>
+        <p></p>
+
+        <table>
+            <tr>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Adres</th>
+                <th>Data</th>
+            </tr>
+
+            <th:block th:each="reservation : ${reservations}">
+                <tr>
+                    <th th:text="${reservation.name}"></th>
+                    <th th:text="${reservation.lastname}"></th>
+                    <th th:text="${reservation.adres}"></th>
+                    <th th:text="${reservation.date}"></th>
+                </tr>
+            </th:block>
+        </table>
+        <p></p>
+    </div>
+</center>
+
+<center><h1><span th:text="${infoMessage}" th:style="'color: green'"></span></h1></center>
+</body>
+<style>
+    table, th, tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0px
+
+
+
+
+</style>
+</html>
