@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface ReservationRepository extends CrudRepository<ReservationModel, Integer> {
     //
-    List<ReservationModel> findByLastnameIgnoreCase(String lastname);
-//
+
+    //
 //    ReservationModel findByNameAndLastname(String name, String lastname);
 //
 //    List<ReservationModel> findByLastnameContaining(String text);
@@ -19,6 +19,8 @@ public interface ReservationRepository extends CrudRepository<ReservationModel, 
 //    //    List<ReservationModel> findByDateGreaterThan(int id);
 //
 //    List<ReservationModel> findByDate(LocalDate id);
+    List<ReservationModel> findByLastnameIgnoreCase(String lastname);
+
     boolean existsByDateEquals(LocalDate date);
 
     List<ReservationModel> findByDateBetweenOrderByDateAsc(LocalDate date1, LocalDate date2);
